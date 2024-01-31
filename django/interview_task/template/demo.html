@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#display-button").click(function() {
+        $.ajax({
+          url: 'http://127.0.0.1:8000/',
+          type: 'GET',
+          success: function(data) {
+            if (data.message) {
+              $("#message").text(data.message);
+            } else {
+              $("#message").text('');
+            }
+          }
+        });
+      });
+    });
+  </script>
+
+  <title>Display Message</title>
+</head>
+<body>
+  <p id="message">{{ message }}</p>
+  <button id="display-button">Display Message</button>
+</body>
+</html>
